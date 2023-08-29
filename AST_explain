@@ -1,0 +1,7 @@
+           AST
+            |
+         /    \
+     INST     INST      DIR
+      /\       /  \      /\
+                        TYPE=LABEL, ADDR=2
+  PUSH  34   JMP LABEL // label will be replaced with 2 in this case
