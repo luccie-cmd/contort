@@ -1,5 +1,6 @@
 #pragma once
 #include <stdint.h>
+#include "mystring.h"
 
 typedef uint64_t Word;
 
@@ -7,6 +8,9 @@ typedef enum{
     TOKEN_INST_UNDEFINED=0,
     TOKEN_INST_PUSH,
     TOKEN_INST_ADD,
+    TOKEN_INST_EQU,
+    TOKEN_INST_JMP,
+    TOKEN_INST_JMP_IF,
     TOKEN_INST_HLT,
 } Token_Inst_Type;
 
@@ -21,7 +25,17 @@ typedef struct{
 } Token_Inst;
 
 typedef struct{
-    char* uwu; // TODO: Directives (labels)
+    String name;
+    uint64_t jmp_addr;
+} Token_Dir_Label;
+
+typedef struct{
+    union{
+        Token_Dir_Label label;
+    } as;
+    enum{
+        TOKEN_DIR_TYPE_LABEL=0,
+    } type;
 } Token_Dir;
 
 typedef struct{

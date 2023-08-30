@@ -1,1 +1,4 @@
-- jump instruction (jz, jc, jnz, jnc, jmp, jmp_if)
+- Interpreter for the *.cn format and also one for the *.icon
+
+
+- jump instruction (jz, jc, jnz, jnc)

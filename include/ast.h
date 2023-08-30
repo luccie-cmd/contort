@@ -1,5 +1,6 @@
 #pragma once
 #include "token.h"
+#include "lexer.h"
 #include <stddef.h>
 
 typedef struct{
@@ -8,7 +9,17 @@ typedef struct{
 } Ast_Node_Inst;
 
 typedef struct{
-    char* uwu;
+    Word jmp_addr;
+    String name;
+} Ast_Dir_Label;
+
+typedef struct{
+    union{
+        Ast_Dir_Label label;
+    } as;
+    enum{
+        AST_DIR_TYPE_LABEL=0,
+    } type;
 } Ast_Node_Dir;
 
 typedef enum{
@@ -29,9 +40,11 @@ typedef struct{
     size_t tokens_size;
     Ast_Node *nodes;
     size_t nodes_size;
+    const Lexer *lexer;
 } Ast;
 
-Ast ast_from_tokens(Token *tokens, size_t size);
+Ast ast_from_tokens(Token *tokens, size_t size, const Lexer *lexer);
+Word ast_GetInstsLen(const Ast *ast);
 void ast_parse_Ast(Ast *ast);
 void ast_compile(Ast *ast, char* out_file);
-void ast_print(Ast ast);
+void ast_print(const Ast *ast);

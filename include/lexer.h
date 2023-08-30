@@ -4,6 +4,13 @@
 #include "token.h"
 
 typedef struct{
+    String name;
+    size_t index_in_ast_nodes;
+} Deferred_Operand;
+
+typedef struct{
+    Deferred_Operand *def_ops;
+    size_t def_ops_len;
     String data;
     size_t index_data;
 } Lexer;

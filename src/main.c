@@ -51,10 +51,10 @@ int main(int argc, char *argv[]){
     String file_data = string_slurp_file(in_file);
     Lexer lexer = lexer_init(file_data);
     Token *toks = lexer_lex_file(&lexer, &len);
-    Ast ast = ast_from_tokens(toks, (size_t)len);
+    Ast ast = ast_from_tokens(toks, (size_t)len, &lexer);
     ast_parse_Ast(&ast);
     ast_compile(&ast, out_file);
-    if(print_ast) ast_print(ast);
+    if(print_ast) ast_print(&ast);
     free(ast.nodes);
     free(toks);
     free(file_data.data);
