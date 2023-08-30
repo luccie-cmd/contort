@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Wall -Wextra -Werror -pedantic -std=c11 -Iinclude -ggdb
+CFLAGS=-Wall -Wextra -Werror -Wswitch-enum -Wmissing-prototypes -pedantic -std=c11 -Iinclude -ggdb
 SRC_DIR=src
 BUILD_DIR=build
 

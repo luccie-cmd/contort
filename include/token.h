@@ -31,3 +31,6 @@ typedef struct{
     } as;
     Token_Type type;
 } Token;
+
+uint8_t Token_Inst_bitEquivalent(Token_Inst_Type type);
+char* token_inst_as_cstr(Token_Inst_Type type);

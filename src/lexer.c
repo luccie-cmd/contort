@@ -38,14 +38,10 @@ Token lexer_advance(Lexer *lexer){
 Token *lexer_lex_file(Lexer *lexer, uint64_t *len){
     Token *tokenlist = malloc(sizeof(Token));
     uint64_t tokenListLen = 0;
-    uint64_t tokenListAllocLen = sizeof(Token);
     while(lexer->data.count > 0){
         Token tok = lexer_advance(lexer);
-        if(tokenListAllocLen/sizeof(Token) >= tokenListLen){
-            tokenListAllocLen*=(2*sizeof(Token));
-            tokenlist = realloc(tokenlist, tokenListAllocLen);
-        }
         tokenlist[tokenListLen++] = tok;
+        tokenlist = realloc(tokenlist, tokenListLen*2*sizeof(Token));
     }
     *len = tokenListLen;
     return tokenlist;
