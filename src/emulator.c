@@ -3,8 +3,7 @@
 #include <stdlib.h>
 #include "token.h"
 
-uint8_t *readFile(const char* path, size_t *len);
-uint8_t *readFile(const char* path, size_t *len){
+static uint8_t *readFile(const char* path, size_t *len){
     FILE *f = fopen(path, "rb");
     if(!f){
         printf("Could not open `%s` no such file or directory\n", path);
@@ -23,8 +22,7 @@ uint8_t *readFile(const char* path, size_t *len){
     return buffer;
 }
 
-uint64_t reverse_bytes(uint64_t bytes);
-uint64_t reverse_bytes(uint64_t bytes){
+static uint64_t reverse_bytes(uint64_t bytes){
     uint64_t result = 0;
     while(bytes!=0){
         result = (result << 8) | (bytes & 0xFF);
@@ -51,14 +49,12 @@ typedef struct{
     int halt;
 } Executor;
 
-void executor_add(Executor *exe, Inst inst);
-void executor_add(Executor *exe, Inst inst){
+static void executor_add(Executor *exe, Inst inst){
     exe->program[exe->program_size++] = inst;
     exe->program = realloc(exe->program, (exe->program_size+1)*sizeof(Inst));
 }
 
-Executor parse_file(uint8_t *buffer, size_t len);
-Executor parse_file(uint8_t *buffer, size_t len){
+static Executor parse_file(uint8_t *buffer, size_t len){
     Executor executor = {0};
     executor.program = malloc(sizeof(Inst));
     executor.stack = malloc(sizeof(Word));
@@ -120,8 +116,7 @@ Executor parse_file(uint8_t *buffer, size_t len){
     return executor;
 }
 
-void executor_run_inst(Executor *exe);
-void executor_run_inst(Executor *exe){
+static void executor_run_inst(Executor *exe){
     Inst inst = exe->program[exe->ip];
     switch(inst.type){
         case TOKEN_INST_PUSH: {
@@ -165,8 +160,7 @@ void executor_run_inst(Executor *exe){
     }
 }
 
-void executor_print_stack(const Executor *exe);
-void executor_print_stack(const Executor *exe){
+static void executor_print_stack(const Executor *exe){
     printf("\nStack:\n");
     for(uint64_t i = 0; i < exe->stack_size; ++i){
         printf("    %ld\n", exe->stack[i]);
@@ -174,8 +168,7 @@ void executor_print_stack(const Executor *exe){
     printf("\n");
 }
 
-void executor_run(Executor *exe);
-void executor_run(Executor *exe){
+static void executor_run(Executor *exe){
     while(!exe->halt){
         executor_run_inst(exe);
     }

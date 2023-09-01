@@ -11,8 +11,7 @@ bool print_ast = false;
 char* out_file = (char*)NULL; 
 char* in_file  = (char*)NULL;
 
-void parse_command_line_arguments(int argc, char** argv);
-void parse_command_line_arguments(int argc, char** argv){
+static void parse_command_line_arguments(int argc, char** argv){
     int i = 0;
     while(i < argc){
         char* argument = argv[i];
