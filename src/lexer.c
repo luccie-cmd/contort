@@ -41,13 +41,13 @@ Token lexer_advance(Lexer *lexer){
         Deferred_Operand def_op;
         def_op.name = argument;
         lexer->def_ops[lexer->def_ops_len++] = def_op;
-        lexer->def_ops = realloc(lexer->def_ops, lexer->def_ops_len*2*sizeof(Deferred_Operand));
+        lexer->def_ops = realloc(lexer->def_ops, (lexer->def_ops_len+1)*sizeof(Deferred_Operand));
         return (Token) {.type = TOKEN_TYPE_INST, .as.inst.type = TOKEN_INST_JMP};
     } else if(string_eq(opcode, string_from_cstr("jmp_if"))){
         Deferred_Operand def_op;
         def_op.name = argument;
         lexer->def_ops[lexer->def_ops_len++] = def_op;
-        lexer->def_ops = realloc(lexer->def_ops, lexer->def_ops_len*2*sizeof(Deferred_Operand));
+        lexer->def_ops = realloc(lexer->def_ops, (lexer->def_ops_len+1)*sizeof(Deferred_Operand));
         return (Token) {.type = TOKEN_TYPE_INST, .as.inst.type = TOKEN_INST_JMP_IF};
     } 
 
