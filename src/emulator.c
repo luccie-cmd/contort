@@ -178,7 +178,6 @@ void executor_run(Executor *exe);
 void executor_run(Executor *exe){
     while(!exe->halt){
         executor_run_inst(exe);
-        executor_print_stack(exe);
     }
 }
 
