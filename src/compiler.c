@@ -57,6 +57,7 @@ int main(int argc, char *argv[]){
     if(print_ast) ast_print(&ast);
     free(ast.nodes);
     free(toks);
+    free(lexer.def_ops);
     free(file_data.data);
     return 0;
 }

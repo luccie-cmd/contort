@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-Ast ast_from_tokens(Token * tokens, size_t size, const Lexer *lexer){
+Ast ast_from_tokens(Token * tokens, size_t size, Lexer *lexer){
     Ast ast;
     ast.tokens = tokens;
     ast.tokens_size = size;
@@ -13,6 +13,14 @@ Ast ast_from_tokens(Token * tokens, size_t size, const Lexer *lexer){
 }
 
 void ast_parse_Ast(Ast *ast){
+    String *names = malloc(sizeof(String));
+    size_t namesi = 0;
+    for(uint64_t k = 0; k < ast->tokens_size; ++k){
+        if(ast->tokens[k].type == TOKEN_TYPE_DIRECTIVE && ast->tokens[k].as.dir.type == TOKEN_DIR_TYPE_LABEL){
+            names[namesi++] = ast->tokens[k].as.dir.as.label.name;
+            names = realloc(names, (namesi+1)*sizeof(String));
+        }
+    }
     for(size_t i = 0; i < ast->tokens_size; ++i){
         switch(ast->tokens[i].type){
             case TOKEN_TYPE_DIRECTIVE: {
@@ -23,16 +31,7 @@ void ast_parse_Ast(Ast *ast){
                         ast->nodes[ast->nodes_size].as.dir.as.label.name = ast->tokens[i].as.dir.as.label.name;
                         ast->nodes[ast->nodes_size].as.dir.as.label.jmp_addr = ast_GetInstsLen(ast);
                         ast->nodes_size++;
-                        ast->nodes = realloc(ast->nodes, ast->nodes_size*2*sizeof(Ast_Node));
-
-                        String *names = malloc(sizeof(String));
-                        size_t namesi = 0;
-                        for(uint64_t k = 0; k < ast->tokens_size; ++k){
-                            if(ast->tokens[k].type == TOKEN_TYPE_DIRECTIVE && ast->tokens[k].as.dir.type == TOKEN_DIR_TYPE_LABEL){
-                                names[namesi++] = ast->tokens[k].as.dir.as.label.name;
-                                names = realloc(names, namesi*2*sizeof(String));
-                            }
-                        }
+                        ast->nodes = realloc(ast->nodes, (ast->nodes_size+1)*sizeof(Ast_Node));
 
                         for(size_t i = 0; i < namesi; ++i){
                             for(size_t j = 0; j < ast->lexer->def_ops_len; ++j){
@@ -53,10 +52,11 @@ void ast_parse_Ast(Ast *ast){
                 ast->nodes[ast->nodes_size].as.inst.type = ast->tokens[i].as.inst.type;
                 ast->nodes[ast->nodes_size].as.inst.operand = ast->tokens[i].as.inst.operand;
                 ast->nodes_size++;
-                ast->nodes = realloc(ast->nodes, ast->nodes_size*2*sizeof(Ast_Node));
+                ast->nodes = realloc(ast->nodes, (ast->nodes_size+1)*sizeof(Ast_Node));
             } break;
         }
     }
+    free(names);
 }
 
 void ast_compile(Ast *ast, char* out_file){

@@ -40,10 +40,10 @@ typedef struct{
     size_t tokens_size;
     Ast_Node *nodes;
     size_t nodes_size;
-    const Lexer *lexer;
+    Lexer *lexer;
 } Ast;
 
-Ast ast_from_tokens(Token *tokens, size_t size, const Lexer *lexer);
+Ast ast_from_tokens(Token *tokens, size_t size, Lexer *lexer);
 Word ast_GetInstsLen(const Ast *ast);
 void ast_parse_Ast(Ast *ast);
 void ast_compile(Ast *ast, char* out_file);
