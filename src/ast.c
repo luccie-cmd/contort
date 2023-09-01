@@ -32,19 +32,6 @@ void ast_parse_Ast(Ast *ast){
                         ast->nodes[ast->nodes_size].as.dir.as.label.jmp_addr = ast_GetInstsLen(ast);
                         ast->nodes_size++;
                         ast->nodes = realloc(ast->nodes, (ast->nodes_size+1)*sizeof(Ast_Node));
-
-                        for(size_t i = 0; i < namesi && ast->lexer->def_ops_len > 0; ++i){
-                            for(size_t j = 0; j < ast->lexer->def_ops_len; ++j){
-                                if(string_eq(names[i], ast->lexer->def_ops[j].name)){
-                                    for(size_t l = 0; l < ast->nodes_size; ++l){
-                                        if(string_eq(names[i], ast->nodes[l].as.dir.as.label.name)){
-                                            ast->nodes[ast->lexer->def_ops[j].index_in_ast_nodes].as.inst.operand = ast->nodes[l].as.dir.as.label.jmp_addr;
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
-                        }
                     } break;
                 }
             } break;
@@ -55,6 +42,18 @@ void ast_parse_Ast(Ast *ast){
                 ast->nodes_size++;
                 ast->nodes = realloc(ast->nodes, (ast->nodes_size+1)*sizeof(Ast_Node));
             } break;
+        }
+    }
+    for(size_t i = 0; i < namesi; ++i){
+        for(size_t j = 0; j < ast->lexer->def_ops_len; ++j){
+            if(string_eq(names[i], ast->lexer->def_ops[j].name)){
+                for(size_t l = 0; l < ast->nodes_size; ++l){
+                    if(string_eq(names[i], ast->nodes[l].as.dir.as.label.name)){
+                        ast->nodes[ast->lexer->def_ops[j].index_in_ast_nodes].as.inst.operand = ast->nodes[l].as.dir.as.label.jmp_addr;
+                        break;
+                    }
+                }
+            }
         }
     }
     free(names);
