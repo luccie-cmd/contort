@@ -143,7 +143,7 @@ static void executor_run_inst(Executor *exe){
             exe->ip++;
         } break;
         case TOKEN_INST_SUB: {
-            exe->stack[exe->stack_size-2] = exe->stack[exe->stack_size-2] - exe->stack[exe->stack_size-1];
+            exe->stack[exe->stack_size-2] = exe->stack[exe->stack_size-1] - exe->stack[exe->stack_size-2];
             exe->stack_size-=1;
             exe->stack = realloc(exe->stack, (exe->stack_size+1)*sizeof(uint64_t));
             exe->ip++;

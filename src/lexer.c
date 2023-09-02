@@ -70,7 +70,7 @@ Token *lexer_lex_file(Lexer *lexer, uint64_t *len){
             lexer->def_ops[lexer->def_ops_len-1].index_in_ast_nodes = tokenListLen;
         }
         tokenlist[tokenListLen++] = tok;
-        tokenlist = realloc(tokenlist, tokenListLen*2*sizeof(Token));
+        tokenlist = realloc(tokenlist, (tokenListLen+1)*sizeof(Token));
     }
     *len = tokenListLen;
     return tokenlist;
