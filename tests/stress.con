@@ -1,0 +1,1000 @@
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
+main:
+    push 34
+    push 35
+    add
+    push 69
+    equ
+    jmp_if end
+    jmp main
+end:
+    hlt
