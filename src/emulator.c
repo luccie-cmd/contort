@@ -96,6 +96,18 @@ static Executor parse_file(uint8_t *buffer, size_t len){
                 Inst inst = MAKE_INST(type, 0);
                 executor_add(&executor, inst);
             } break;
+            case TOKEN_INST_SUB: {
+                Inst inst = MAKE_INST(type, 0);
+                executor_add(&executor, inst);
+            } break;
+            case TOKEN_INST_MUL: {
+                Inst inst = MAKE_INST(type, 0);
+                executor_add(&executor, inst);
+            } break;
+            case TOKEN_INST_DIV: {
+                Inst inst = MAKE_INST(type, 0);
+                executor_add(&executor, inst);
+            } break;
             case TOKEN_INST_EQU: {
                 Inst inst = MAKE_INST(type, 0);
                 executor_add(&executor, inst);
@@ -126,6 +138,24 @@ static void executor_run_inst(Executor *exe){
         } break;
         case TOKEN_INST_ADD: {
             exe->stack[exe->stack_size-2] = exe->stack[exe->stack_size-2] + exe->stack[exe->stack_size-1];
+            exe->stack_size-=1;
+            exe->stack = realloc(exe->stack, (exe->stack_size+1)*sizeof(uint64_t));
+            exe->ip++;
+        } break;
+        case TOKEN_INST_SUB: {
+            exe->stack[exe->stack_size-2] = exe->stack[exe->stack_size-2] - exe->stack[exe->stack_size-1];
+            exe->stack_size-=1;
+            exe->stack = realloc(exe->stack, (exe->stack_size+1)*sizeof(uint64_t));
+            exe->ip++;
+        } break;
+        case TOKEN_INST_MUL: {
+            exe->stack[exe->stack_size-2] = exe->stack[exe->stack_size-2] * exe->stack[exe->stack_size-1];
+            exe->stack_size-=1;
+            exe->stack = realloc(exe->stack, (exe->stack_size+1)*sizeof(uint64_t));
+            exe->ip++;
+        } break;
+        case TOKEN_INST_DIV: {
+            exe->stack[exe->stack_size-2] = exe->stack[exe->stack_size-2] / exe->stack[exe->stack_size-1];
             exe->stack_size-=1;
             exe->stack = realloc(exe->stack, (exe->stack_size+1)*sizeof(uint64_t));
             exe->ip++;
@@ -176,9 +206,10 @@ static void executor_run(Executor *exe){
 
 int main(){
     size_t len = 0;
-    uint8_t* file_buffer = readFile("./build/main.cn", &len);
+    uint8_t* file_buffer = readFile("./a.cn", &len);
     Executor exe = parse_file(file_buffer, len);
     executor_run(&exe);
+    executor_print_stack(&exe);
 
     free(file_buffer);
     free(exe.program);

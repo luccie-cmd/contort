@@ -86,6 +86,18 @@ void ast_compile(Ast *ast, char* out_file){
                     uint8_t bitEqu = Token_Inst_bitEquivalent(ast->nodes[i].as.inst.type);
                     fwrite(&bitEqu, 1, 1, f);
                 } break;
+                case TOKEN_INST_SUB: {
+                    uint8_t bitEqu = Token_Inst_bitEquivalent(ast->nodes[i].as.inst.type);
+                    fwrite(&bitEqu, 1, 1, f);
+                } break;
+                case TOKEN_INST_MUL: {
+                    uint8_t bitEqu = Token_Inst_bitEquivalent(ast->nodes[i].as.inst.type);
+                    fwrite(&bitEqu, 1, 1, f);
+                } break;
+                case TOKEN_INST_DIV: {
+                    uint8_t bitEqu = Token_Inst_bitEquivalent(ast->nodes[i].as.inst.type);
+                    fwrite(&bitEqu, 1, 1, f);
+                } break;
                 case TOKEN_INST_HLT: {
                     uint8_t bitEqu = Token_Inst_bitEquivalent(ast->nodes[i].as.inst.type);
                     fwrite(&bitEqu, 1, 1, f);

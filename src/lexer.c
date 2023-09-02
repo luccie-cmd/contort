@@ -33,6 +33,12 @@ Token lexer_advance(Lexer *lexer){
         return (Token) {.type = TOKEN_TYPE_INST, .as.inst.operand = string_to_int(argument), .as.inst.type = TOKEN_INST_PUSH};
     } else if(string_eq(opcode, string_from_cstr("add"))){
         return (Token) {.type = TOKEN_TYPE_INST, .as.inst.type = TOKEN_INST_ADD};
+    } else if(string_eq(opcode, string_from_cstr("sub"))){
+        return (Token) {.type = TOKEN_TYPE_INST, .as.inst.type = TOKEN_INST_SUB};
+    } else if(string_eq(opcode, string_from_cstr("mul"))){
+        return (Token) {.type = TOKEN_TYPE_INST, .as.inst.type = TOKEN_INST_MUL};
+    } else if(string_eq(opcode, string_from_cstr("div"))){
+        return (Token) {.type = TOKEN_TYPE_INST, .as.inst.type = TOKEN_INST_DIV};
     } else if(string_eq(opcode, string_from_cstr("hlt"))){
         return (Token) {.type = TOKEN_TYPE_INST, .as.inst.type = TOKEN_INST_HLT};
     } else if(string_eq(opcode, string_from_cstr("equ"))){
