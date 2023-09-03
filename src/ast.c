@@ -30,7 +30,7 @@ void ast_parse_Ast(Ast *ast){
                         ast->nodes[ast->nodes_size].type = AST_NODE_TYPE_DIR;
                         ast->nodes[ast->nodes_size].as.dir.type = AST_DIR_TYPE_LABEL;
                         ast->nodes[ast->nodes_size].as.dir.as.label.name = ast->tokens[i].as.dir.as.label.name;
-                        ast->nodes[ast->nodes_size].as.dir.as.label.jmp_addr = ast_GetInstsLen(ast);
+                        ast->nodes[ast->nodes_size].as.dir.as.label.jmp_addr.byte = (uint8_t)ast_GetInstsLen(ast);
                         ast->nodes_size++;
                         ast->nodes = realloc(ast->nodes, (ast->nodes_size+1)*sizeof(Ast_Node));
                     } break;
@@ -68,8 +68,15 @@ void ast_compile(Ast *ast, char* out_file){
                 case TOKEN_INST_PUSH: {
                     uint8_t bitEqu = Token_Inst_bitEquivalent(ast->nodes[i].as.inst.type);
                     fwrite(&bitEqu, 1, 1, f);
-                    Word u64_op = ast->nodes[i].as.inst.operand;
-                    fwrite(&u64_op, sizeof(u64_op), 1, f);
+                    if(ast->nodes[i].as.inst.operand.byte <= 255){
+                        uint8_t bytes_to_read = 1;
+                        fwrite(&bytes_to_read, bytes_to_read, 1, f);
+                    } else if(ast->nodes[i].as.inst.operand.word <= 65535){
+                        uint8_t bytes_to_read = 2;
+                        fwrite(&bytes_to_read, bytes_to_read, 1, f);
+                    }
+                    // Word u64_op = ast->nodes[i].as.inst.operand;
+                    // fwrite(&u64_op, sizeof(u64_op), 1, f);
                 } break;
                 case TOKEN_INST_JMP: {
                     uint8_t bitEqu = Token_Inst_bitEquivalent(ast->nodes[i].as.inst.type);
@@ -130,15 +137,15 @@ void ast_print(const Ast *ast){
     printf("AST:\n");
     for(size_t i = 0; i < ast->nodes_size; ++i){
         if(ast->nodes[i].type == AST_NODE_TYPE_DIR){
-            ERROR(ERROR_SEVERITY_INFO, "    {type: dir, {label: {name: %.*s, jmp addr: %ld}}\n", (int)ast->nodes[i].as.dir.as.label.name.count, ast->nodes[i].as.dir.as.label.name.data, ast->nodes[i].as.dir.as.label.jmp_addr);
+            ERROR(ERROR_SEVERITY_INFO, "    {type: dir, {label: {name: %.*s, jmp addr: %d}}\n", (int)ast->nodes[i].as.dir.as.label.name.count, ast->nodes[i].as.dir.as.label.name.data, ast->nodes[i].as.dir.as.label.jmp_addr.byte);
         } else if(ast->nodes[i].type == AST_NODE_TYPE_INST){
-            ERROR(ERROR_SEVERITY_INFO, "    {type: inst, {type: %s, operand: %ld}}\n", token_inst_as_cstr(ast->nodes[i].as.inst.type), ast->nodes[i].as.inst.operand);
+            ERROR(ERROR_SEVERITY_INFO, "    {type: inst, {type: %s, operand: %d}}\n", token_inst_as_cstr(ast->nodes[i].as.inst.type), ast->nodes[i].as.inst.operand.byte);
         }
     }
 }
 
-Word ast_GetInstsLen(const Ast *ast){
-    Word insts = 0;
+uint64_t ast_GetInstsLen(const Ast *ast){
+    uint64_t insts = 0;
     for(size_t i = 0; i < ast->nodes_size; ++i){
         if(ast->nodes[i].type == AST_NODE_TYPE_INST){
             insts++;

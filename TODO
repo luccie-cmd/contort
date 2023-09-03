@@ -1,7 +1,5 @@
-- Interpreter for the *.icon (.cn is alrady implemented)
-
-
 - jump instruction (jz, jc, jnz, jnc)
 - push (size) <number>
 (size) byte, word, double, quad
 <number>: integer
+- Interpreter for the *.icon (.cn is alrady implemented)

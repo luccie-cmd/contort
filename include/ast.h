@@ -44,7 +44,7 @@ typedef struct{
 } Ast;
 
 Ast ast_from_tokens(Token *tokens, size_t size, Lexer *lexer);
-Word ast_GetInstsLen(const Ast *ast);
+uint64_t ast_GetInstsLen(const Ast *ast);
 void ast_parse_Ast(Ast *ast);
 void ast_compile(Ast *ast, char* out_file);
 void ast_print(const Ast *ast);

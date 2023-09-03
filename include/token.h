@@ -2,7 +2,10 @@
 #include <stdint.h>
 #include "mystring.h"
 
-typedef uint64_t Word;
+typedef union{
+    uint8_t byte;
+    uint16_t word;
+} Word;
 
 typedef enum{
     TOKEN_INST_UNDEFINED=0,

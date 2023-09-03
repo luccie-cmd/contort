@@ -31,7 +31,14 @@ Token lexer_advance(Lexer *lexer){
     }
 
     if(string_eq(opcode, string_from_cstr("push"))){
-        return (Token) {.type = TOKEN_TYPE_INST, .as.inst.operand = string_to_int(argument), .as.inst.type = TOKEN_INST_PUSH};
+        String size = string_trim(string_chopByDelim(&argument, ' '));
+        int number = string_to_int(string_trim(string_chopByDelim(&argument, CONTORT_COMMENT)));
+        if(string_eq(size, string_from_cstr("byte")) || number <= 255){
+            return (Token) {.type = TOKEN_TYPE_INST, .as.inst.operand.byte = (uint8_t)number, .as.inst.type = TOKEN_INST_PUSH};
+        } else if(string_eq(size, string_from_cstr("word")) || number <= 65535){
+            return (Token) {.type = TOKEN_TYPE_INST, .as.inst.operand.word = (uint16_t)number, .as.inst.type = TOKEN_INST_PUSH};
+        }
+        exit(0);
     } else if(string_eq(opcode, string_from_cstr("add"))){
         return (Token) {.type = TOKEN_TYPE_INST, .as.inst.type = TOKEN_INST_ADD};
     } else if(string_eq(opcode, string_from_cstr("sub"))){
