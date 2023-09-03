@@ -5,6 +5,7 @@
 #include "lexer.h"
 #include "mystring.h"
 #include "ast.h"
+#include "error.h"
 
 bool has_in_file = false;
 bool print_ast = false;
@@ -17,7 +18,7 @@ static void parse_command_line_arguments(int argc, char** argv){
         char* argument = argv[i];
         if(strcmp(argument, "-o") == 0){
             if(i == argc){
-                fprintf(stderr, "Expected argument after `-o`!\n");
+                ERROR(ERROR_SEVERITY_FATAL, "Expected argument after `-o`!\n%s", "");
                 exit(1);
             }
             i++;
@@ -26,12 +27,13 @@ static void parse_command_line_arguments(int argc, char** argv){
             print_ast = true;
         } else{
             if(has_in_file){
-                fprintf(stderr, "Cannot parse more then 1 input file!\n");
-                exit(1);
+                ERROR(ERROR_SEVERITY_WARNING, "Cannot parse more then 1 input file!\n%s", "");
             }
-            i++;
-            in_file = argv[i];
-            has_in_file = true;
+            else{
+                i++;
+                in_file = argv[i];
+                has_in_file = true;
+            }
         }
         ++i;
     }
@@ -40,7 +42,7 @@ static void parse_command_line_arguments(int argc, char** argv){
 int main(int argc, char *argv[]){
     parse_command_line_arguments(argc, argv);
     if(!has_in_file){
-        fprintf(stderr, "No input file provided\n");
+        ERROR(ERROR_SEVERITY_FATAL, "No file provided for compiler!\n%s", "");
         exit(1);
     }
     if(out_file == NULL){

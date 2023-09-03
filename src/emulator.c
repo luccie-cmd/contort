@@ -2,11 +2,12 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include "token.h"
+#include "error.h"
 
 static uint8_t *readFile(const char* path, size_t *len){
     FILE *f = fopen(path, "rb");
     if(!f){
-        printf("Could not open `%s` no such file or directory\n", path);
+        ERROR(ERROR_SEVERITY_FATAL, "Could not open `%s` no such file or directory\n", path);
         exit(1);
     }
 
@@ -119,7 +120,7 @@ static Executor parse_file(uint8_t *buffer, size_t len){
 
             case TOKEN_INST_UNDEFINED:
             default: {
-                printf("No value with %x is parsed yet\n", type);
+                ERROR(ERROR_SEVERITY_FATAL, "No value with %x is parsed yet\n", type);
                 exit(1);
             }
         }
@@ -143,7 +144,7 @@ static void executor_run_inst(Executor *exe){
             exe->ip++;
         } break;
         case TOKEN_INST_SUB: {
-            exe->stack[exe->stack_size-2] = exe->stack[exe->stack_size-1] - exe->stack[exe->stack_size-2];
+            exe->stack[exe->stack_size-2] = exe->stack[exe->stack_size-2] - exe->stack[exe->stack_size-1];
             exe->stack_size-=1;
             exe->stack = realloc(exe->stack, (exe->stack_size+1)*sizeof(uint64_t));
             exe->ip++;
@@ -155,6 +156,10 @@ static void executor_run_inst(Executor *exe){
             exe->ip++;
         } break;
         case TOKEN_INST_DIV: {
+            if(exe->stack[exe->stack_size-1] == 0){
+                ERROR(ERROR_SEVERITY_FATAL, "Cannot divide by %ld!\n", exe->stack[exe->stack_size-1]);
+                exit(1);
+            }
             exe->stack[exe->stack_size-2] = exe->stack[exe->stack_size-2] / exe->stack[exe->stack_size-1];
             exe->stack_size-=1;
             exe->stack = realloc(exe->stack, (exe->stack_size+1)*sizeof(uint64_t));
@@ -184,18 +189,17 @@ static void executor_run_inst(Executor *exe){
         } break;
         case TOKEN_INST_UNDEFINED:
         default: {
-            printf("%s is not handled yet\n", token_inst_as_cstr(inst.type));
+            ERROR(ERROR_SEVERITY_FATAL, "%d is not handled yet\n", inst.type);
             exit(1);
         } break;
     }
 }
 
 static void executor_print_stack(const Executor *exe){
-    printf("\nStack:\n");
+    printf("Stack:\n");
     for(uint64_t i = 0; i < exe->stack_size; ++i){
-        printf("    %ld\n", exe->stack[i]);
+        ERROR(ERROR_SEVERITY_INFO, "    %ld\n", exe->stack[i]);
     }
-    printf("\n");
 }
 
 static void executor_run(Executor *exe){

@@ -1,4 +1,5 @@
 #include "lexer.h"
+#include "error.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -57,7 +58,7 @@ Token lexer_advance(Lexer *lexer){
         return (Token) {.type = TOKEN_TYPE_INST, .as.inst.type = TOKEN_INST_JMP_IF};
     } 
 
-    fprintf(stderr, "`%.*s` is not a valid instruction\n", (int)opcode.count, opcode.data);
+    ERROR(ERROR_SEVERITY_FATAL, "`%.*s` is not a valid instruction\n", (int)opcode.count, opcode.data);
     exit(1);
 }
 

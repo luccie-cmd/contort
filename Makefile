@@ -2,7 +2,7 @@ CC=gcc
 CFLAGS=-Wall -Wextra  -Wswitch-enum -Wmissing-prototypes -Werror -pedantic -std=c11 -Iinclude -ggdb
 SRC_DIR=src
 BUILD_DIR=build
-LIBS=$(SRC_DIR)/token.c $(SRC_DIR)/lexer.c $(SRC_DIR)/ast.c $(SRC_DIR)/mystring.c
+LIBS=$(SRC_DIR)/token.c $(SRC_DIR)/lexer.c $(SRC_DIR)/ast.c $(SRC_DIR)/mystring.c $(SRC_DIR)/error.c
 
 all: always $(BUILD_DIR)/compiler $(BUILD_DIR)/emulator
 

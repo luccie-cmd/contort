@@ -1,4 +1,5 @@
 #include "ast.h"
+#include "error.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -108,7 +109,7 @@ void ast_compile(Ast *ast, char* out_file){
                 } break;
                 case TOKEN_INST_UNDEFINED:
                 default: {
-                    fprintf(stderr, "Invalid instruction type\n");
+                    ERROR(ERROR_SEVERITY_FATAL, "Invalid instruction type\n%s", "");
                     exit(1);
                 } break;
             }
@@ -116,7 +117,7 @@ void ast_compile(Ast *ast, char* out_file){
             fwrite(&inst_end, 1, 1, f);
         } else{
             if(ast->nodes[i].type != AST_NODE_TYPE_DIR){
-                fprintf(stderr, "Invalid node type!\n");
+                ERROR(ERROR_SEVERITY_FATAL, "Invalid node type!\n%s", "");
                 exit(1);
             }
         }
@@ -129,9 +130,9 @@ void ast_print(const Ast *ast){
     printf("AST:\n");
     for(size_t i = 0; i < ast->nodes_size; ++i){
         if(ast->nodes[i].type == AST_NODE_TYPE_DIR){
-            printf("    {type: dir, {label: {name: %.*s, jmp addr: %ld}}\n", (int)ast->nodes[i].as.dir.as.label.name.count, ast->nodes[i].as.dir.as.label.name.data, ast->nodes[i].as.dir.as.label.jmp_addr);
+            ERROR(ERROR_SEVERITY_INFO, "    {type: dir, {label: {name: %.*s, jmp addr: %ld}}\n", (int)ast->nodes[i].as.dir.as.label.name.count, ast->nodes[i].as.dir.as.label.name.data, ast->nodes[i].as.dir.as.label.jmp_addr);
         } else if(ast->nodes[i].type == AST_NODE_TYPE_INST){
-            printf("    {type: inst, {type: %s, operand: %ld}}\n", token_inst_as_cstr(ast->nodes[i].as.inst.type), ast->nodes[i].as.inst.operand);
+            ERROR(ERROR_SEVERITY_INFO, "    {type: inst, {type: %s, operand: %ld}}\n", token_inst_as_cstr(ast->nodes[i].as.inst.type), ast->nodes[i].as.inst.operand);
         }
     }
 }
